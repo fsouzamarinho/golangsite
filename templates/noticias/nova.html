@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Notícia</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Nova Notícia</h2>
+    <form action="/noticias" method="POST">
+        <div class="form-group">
+            <label for="topico">Tópico</label>
+            <input type="text" class="form-control" id="topico" name="topico" required>
+        </div>
+
+        <div class="form-group">
+            <label for="resumo">Resumo</label>
+            <textarea class="form-control" id="resumo" name="resumo" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="palavras">Palavras-chave</label>
+            <input type="text" class="form-control" id="palavras" name="palavras">
+        </div>
+
+        <div class="form-group">
+            <label for="noticia">Notícia</label>
+            <textarea class="form-control" id="noticia" name="noticia" rows="8"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="classe">Editoria Principal (Classe)</label>
+            <input type="number" class="form-control" id="classe" name="classe" required>
+        </div>
+
+        <div class="form-group">
+            <label for="classe2">Posição (Classe1)</label>
+            <select class="form-control" name="classe2" id="classe2">
+                <option value="Normal">Normal</option>
+                <option value="Destaque">Destaque</option>
+                <option value="video">Vídeo</option>
+                <option value="noindex">No Index</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="colunista">Autor (ID do colunista)</label>
+            <input type="number" class="form-control" id="colunista" name="colunista" required>
+        </div>
+
+        <div class="form-group">
+            <label for="legenda">Legenda da foto</label>
+            <input type="text" class="form-control" id="legenda" name="legenda">
+        </div>
+
+        <div class="form-group">
+            <label for="autor">Nome do Autor</label>
+            <input type="text" class="form-control" id="autor" name="autor">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar Notícia</button>
+    </form>
+</div>
+</body>
+</html>

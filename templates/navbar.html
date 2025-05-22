@@ -1,0 +1,48 @@
+{{ define "navbar" }}
+<nav class="navbar fixed-top shadow-sm navbar-light bg-body-tertiary">
+  <div class="container-fluid d-flex justify-content-between">
+    <button class="navbar-toggler p-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+      <span class="navbar-toggler-icon" style="font-size: 0.7em;"></span>
+    </button>
+    <a class="navbar-brand mx-auto" href="https://andravirtual.com.br">
+      <img src="https://andravirtual.com.br/images/logo.png" alt="Andravirtual">
+    </a>
+    <ul class="list-inline mb-0 d-flex align-items-center gap-2">
+      <li><a href="https://facebook.com/andravirtual"><img src="https://andravirtual.com.br/svg/facebook.svg" width="22"></a></li>
+      <li><a href="https://instagram.com/andravirtual"><img src="https://andravirtual.com.br/svg/instagram.svg" width="22"></a></li>
+    </ul>
+  </div>
+
+  <div class="offcanvas offcanvas-start shadow-lg" id="offcanvasNavbar">
+    <div class="offcanvas-header bg-primary text-white">
+      <h5 class="offcanvas-title">ÔÔÔ coisa boa!</h5>
+      <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body bg-light px-3">
+      <ul class="navbar-nav">
+        {{ range .Menus }}
+        <li class="nav-item">
+          {{ if .Editorias }}
+          <a class="nav-link d-flex justify-content-between" data-bs-toggle="collapse" href="#menu{{ .Codigo }}">
+            <strong>{{ .Nome | ToUpper }}</strong><span>▶</span>
+          </a>
+          <ul class="collapse list-unstyled ps-3" id="menu{{ .Codigo }}">
+            {{ range .Editorias }}
+            <li><a class="nav-link text-secondary" href="/{{ .Nome | urlquery }}">{{ .Nome }}</a></li>
+            {{ end }}
+          </ul>
+          {{ else }}
+          <a class="nav-link text-body" href="{{ .Link }}"><strong>{{ .Nome | ToUpper }}</strong></a>
+          {{ end }}
+        </li>
+        {{ end }}
+      </ul>
+      <form action="/buscar" class="d-flex mt-3">
+        <input class="form-control me-2" name="qsearch" type="search" placeholder="Buscar Notícia">
+        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+      </form>
+      <p class="lead text-center mt-2">Desde 2001</p>
+    </div>
+  </div>
+</nav>
+{{ end }}

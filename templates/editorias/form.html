@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Editoria</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+  <h2 class="mb-4">{{if eq .Editoria.Codigo 0}}Nova Editoria{{else}}Editar Editoria{{end}}</h2>
+  <form action="/editorias" method="POST">
+    <input type="hidden" name="codigo" value="{{.Editoria.Codigo}}">
+
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome" name="nome" value="{{.Editoria.Nome}}" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="codmenu" class="form-label">Menu Vinculado</label>
+      <select class="form-select" id="codmenu" name="codmenu" required>
+        <option value="">Selecione...</option>
+        {{range .Menus}}
+          <option value="{{.Codigo}}" {{if eq .Codigo $.Editoria.CodMenu}}selected{{end}}>{{.Nome}}</option>
+        {{end}}
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="/editorias" class="btn btn-secondary">Cancelar</a>
+  </form>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Andravirtual</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/static/css/favicon.png">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfDjMEqAAAAAMco8r1ixMrnXgXWX4KGwc9NaswW"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #2454A0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      max-width: 400px;
+      min-width: 320px;
+      padding: 15px;
+    }
+    .wrapperlogin {
+      background-color: #fff;
+      width: 100%;
+      border-radius: 10px;
+      font-family: 'Ubuntu', sans-serif;
+    }
+    .wrapperlogin .titulo {
+      background-color: #0B5ED7;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .mensagem {
+      color: #2454A0;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .form-group { padding: 15px 20px 10px 20px; }
+    .row { position: relative; margin-bottom: 15px; height: 40px; display: flex; }
+    .row input { width: 100%; height: 100%; padding-left: 50px; }
+    .row i {
+      background-color: #2454A0;
+      color: #fff;
+      position: absolute;
+      height: 100%;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-cadastrar {
+      background-color: #2454A0;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+      width: 100%;
+      height: 100%;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-cadastrar:hover { background-color: #3498DB; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="wrapperlogin">
+      <div class="titulo">ANDRAVIRTUAL - INFORME SEUS DADOS</div>
+      <form action="/login" method="POST" class="form-group" id="loginform">
+        <div class="mensagem">
+          {{if .Erro}}<p>{{.Erro}}</p>{{end}}
+        </div>
+        <div class="row">
+          <i class="fas fa-envelope"></i>
+          <input name="login" type="text" id="email" size="15" required />
+        </div>
+        <div class="row">
+          <i class="fas fa-lock"></i>
+          <input name="senha" type="password" id="senha" size="15" required />
+        </div>
+        <div class="row">
+          <button class="g-recaptcha btn-cadastrar"
+                  data-sitekey="6LfDjMEqAAAAAMco8r1ixMrnXgXWX4KGwc9NaswW"
+                  data-callback='onSubmit' data-action='submit'>Acessar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function onSubmit(token) {
+      document.getElementById("loginform").submit();
+    }
+  </script>
+</body>
+</html>

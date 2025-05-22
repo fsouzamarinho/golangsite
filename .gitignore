@@ -1,0 +1,41 @@
+# Go build artifacts
+/bin/
+/build/
+/dist/
+*.exe
+*.test
+*.out
+
+# Cache do Go
+*.log
+*.tmp
+*.cache
+*.prof
+
+# Diretórios ocultos e configurações locais
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Vendor (se for usar `go mod vendor`)
+vendor/
+
+# Arquivos de ambiente e configuração
+.env
+.env.*
+
+# Arquivos do banco de dados ou dumps
+*.sql
+*.sql.gz
+
+# Ignora pastas específicas de deploy, se existirem
+*.bak
+*.old
+
+# NÃO IGNORAR assets estáticos usados no site:
+# static/
+# templates/
+
+# Se usar templates HTML:
+*.tpl~   # arquivos temporários

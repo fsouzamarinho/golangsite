@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Menu</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+  <h2 class="mb-4">{{if eq .Codigo 0}}Novo Menu{{else}}Editar Menu{{end}}</h2>
+  <form action="/menus" method="POST">
+    <input type="hidden" name="codigo" value="{{.Codigo}}">
+
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome" name="nome" value="{{.Nome}}" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="link" class="form-label">Link</label>
+      <input type="text" class="form-control" id="link" name="link" value="{{.Link}}">
+    </div>
+
+    <div class="mb-3">
+      <label for="ordem" class="form-label">Ordem</label>
+      <input type="number" class="form-control" id="ordem" name="ordem" value="{{.Ordem}}" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="/menus" class="btn btn-secondary">Cancelar</a>
+  </form>
+</body>
+</html>
